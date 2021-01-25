@@ -2,7 +2,6 @@ import base64
 import pytest
 
 from firebasescrypt import (
-    InvalidPassword,
     generate_derived_key,
     verify_password
 )
@@ -22,9 +21,9 @@ def test_verifies_password_correctly():
     assert(result)
 
 def test_fails_with_invalid_password():
-    with pytest.raises(InvalidPassword):
-        invalid_password="secret"
-        verify_password(invalid_password, password_hash, salt, salt_separator, signer_key, rounds, mem_cost)
+    invalid_password="secret"
+    result = verify_password(invalid_password, password_hash, salt, salt_separator, signer_key, rounds, mem_cost)
+    assert(result == False)
 
 
 def test_generate_derived_key():

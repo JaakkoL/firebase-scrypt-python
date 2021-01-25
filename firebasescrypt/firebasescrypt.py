@@ -22,8 +22,6 @@ import base64
 import hashlib
 from Crypto.Cipher import AES
 
-class InvalidPassword(Exception):
-    pass
 
 def generate_derived_key(
         password: str,
@@ -86,7 +84,4 @@ def verify_password(
 
     password_hash = base64.b64encode(result).decode('utf-8')
 
-    if password_hash == known_hash:
-        return True
-    
-    raise InvalidPassword()
+    return password_hash == known_hash
