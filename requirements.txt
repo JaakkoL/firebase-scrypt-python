@@ -1,0 +1,2 @@
+pycryptodome>=3.9
+pytest>=6.0
