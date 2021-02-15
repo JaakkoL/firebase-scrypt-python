@@ -20,6 +20,8 @@ See: https://github.com/firebase/scrypt/issues/2#issuecomment-548203625
 
 import base64
 import hashlib
+import hmac
+
 from Crypto.Cipher import AES
 
 
@@ -84,4 +86,4 @@ def verify_password(
 
     password_hash = base64.b64encode(result).decode('utf-8')
 
-    return password_hash == known_hash
+    return hmac.compare_digest(password_hash, known_hash)
