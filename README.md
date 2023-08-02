@@ -31,7 +31,7 @@ password = "user1password"
 
 is_valid = firebasescrypt.verify_password(
     password=password,
-    password_hash=password_hash.
+    known_hash=password_hash,
     salt=salt,
     salt_separator=salt_separator,
     signer_key=signer_key,
